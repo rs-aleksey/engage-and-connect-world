@@ -11,20 +11,26 @@ import {
   DropdownMenuSeparator, 
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
+import { Link, useLocation } from "react-router-dom";
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <div className="container mx-auto px-4 flex items-center justify-between h-14">
         {/* Left Section - Logo & Search */}
         <div className="flex items-center gap-2 md:gap-4">
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div className="w-10 h-10 rounded-full bg-facebook-primary flex items-center justify-center">
               <span className="text-white font-bold text-2xl">f</span>
             </div>
-          </a>
+          </Link>
           
           <div className="hidden md:flex relative">
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
@@ -44,24 +50,36 @@ export function Header() {
         <nav className="hidden md:flex items-center justify-center flex-1">
           <ul className="flex">
             <li>
-              <Button variant="ghost" className="h-14 px-4" asChild>
-                <a href="/" className="flex flex-col items-center">
-                  <Home className="h-6 w-6 text-facebook-primary" />
-                </a>
+              <Button 
+                variant="ghost" 
+                className={`h-14 px-4 ${isActive('/') ? 'border-b-2 border-facebook-primary' : ''}`} 
+                asChild
+              >
+                <Link to="/" className="flex flex-col items-center">
+                  <Home className={`h-6 w-6 ${isActive('/') ? 'text-facebook-primary' : ''}`} />
+                </Link>
               </Button>
             </li>
             <li>
-              <Button variant="ghost" className="h-14 px-4" asChild>
-                <a href="/friends" className="flex flex-col items-center">
-                  <Users className="h-6 w-6" />
-                </a>
+              <Button 
+                variant="ghost" 
+                className={`h-14 px-4 ${isActive('/friends') ? 'border-b-2 border-facebook-primary' : ''}`} 
+                asChild
+              >
+                <Link to="/friends" className="flex flex-col items-center">
+                  <Users className={`h-6 w-6 ${isActive('/friends') ? 'text-facebook-primary' : ''}`} />
+                </Link>
               </Button>
             </li>
             <li>
-              <Button variant="ghost" className="h-14 px-4" asChild>
-                <a href="/messages" className="flex flex-col items-center">
-                  <MessageSquare className="h-6 w-6" />
-                </a>
+              <Button 
+                variant="ghost" 
+                className={`h-14 px-4 ${isActive('/messages') ? 'border-b-2 border-facebook-primary' : ''}`} 
+                asChild
+              >
+                <Link to="/messages" className="flex flex-col items-center">
+                  <MessageSquare className={`h-6 w-6 ${isActive('/messages') ? 'text-facebook-primary' : ''}`} />
+                </Link>
               </Button>
             </li>
           </ul>

@@ -2,12 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { User, UserRoundSearch, Bookmark, Clock, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Link } from "react-router-dom";
 
 export function LeftSidebar() {
   const shortcuts = [
-    { name: "Friends", icon: <UserRoundSearch className="h-5 w-5 mr-3" /> }, // Changed icon here
-    { name: "Saved", icon: <Bookmark className="h-5 w-5 mr-3" /> },
-    { name: "Memories", icon: <Clock className="h-5 w-5 mr-3" /> },
+    { name: "Friends", icon: <UserRoundSearch className="h-5 w-5 mr-3" />, path: "/friends" }, // Changed icon here
+    { name: "Saved", icon: <Bookmark className="h-5 w-5 mr-3" />, path: "#" },
+    { name: "Memories", icon: <Clock className="h-5 w-5 mr-3" />, path: "#" },
   ];
 
   const groups = [
@@ -21,13 +22,13 @@ export function LeftSidebar() {
       <div className="space-y-4">
         {/* User Profile Shortcut */}
         <Button variant="ghost" className="w-full justify-start font-normal" asChild>
-          <a href="/profile" className="flex items-center">
+          <Link to="/profile" className="flex items-center">
             <Avatar className="h-9 w-9 mr-3">
               <AvatarImage src="/placeholder.svg" alt="User" />
               <AvatarFallback>U</AvatarFallback>
             </Avatar>
             <span>Your Name</span>
-          </a>
+          </Link>
         </Button>
 
         {/* Shortcuts */}
@@ -38,10 +39,10 @@ export function LeftSidebar() {
             className="w-full justify-start font-normal" 
             asChild
           >
-            <a href="#" className="flex items-center">
+            <Link to={shortcut.path} className="flex items-center">
               {shortcut.icon}
               <span>{shortcut.name}</span>
-            </a>
+            </Link>
           </Button>
         ))}
 
