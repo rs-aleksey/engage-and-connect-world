@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { LeftSidebar } from "@/components/layout/LeftSidebar";
 import { Input } from "@/components/ui/input";
@@ -105,12 +106,16 @@ const FriendCard = ({ friend }) => (
   <Card className="hover:bg-gray-50 transition-colors">
     <CardContent className="p-4 flex justify-between items-center">
       <div className="flex items-center gap-3">
-        <Avatar className="h-12 w-12">
-          <AvatarImage src={friend.avatar} alt={friend.name} />
-          <AvatarFallback>{friend.name.charAt(0)}</AvatarFallback>
-        </Avatar>
+        <Link to={`/person/${friend.id}`}>
+          <Avatar className="h-12 w-12">
+            <AvatarImage src={friend.avatar} alt={friend.name} />
+            <AvatarFallback>{friend.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+        </Link>
         <div>
-          <h3 className="font-medium">{friend.name}</h3>
+          <Link to={`/person/${friend.id}`} className="hover:underline">
+            <h3 className="font-medium">{friend.name}</h3>
+          </Link>
           <p className="text-sm text-gray-500">{friend.mutualFriends} mutual friends</p>
           {friend.status === "online" && (
             <span className="inline-flex items-center text-xs text-green-600">
@@ -139,12 +144,16 @@ const RequestCard = ({ request }) => (
   <Card className="hover:bg-gray-50 transition-colors">
     <CardContent className="p-4 flex justify-between items-center">
       <div className="flex items-center gap-3">
-        <Avatar className="h-12 w-12">
-          <AvatarImage src={request.avatar} alt={request.name} />
-          <AvatarFallback>{request.name.charAt(0)}</AvatarFallback>
-        </Avatar>
+        <Link to={`/person/${request.id}`}>
+          <Avatar className="h-12 w-12">
+            <AvatarImage src={request.avatar} alt={request.name} />
+            <AvatarFallback>{request.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+        </Link>
         <div>
-          <h3 className="font-medium">{request.name}</h3>
+          <Link to={`/person/${request.id}`} className="hover:underline">
+            <h3 className="font-medium">{request.name}</h3>
+          </Link>
           <p className="text-sm text-gray-500">{request.mutualFriends} mutual friends</p>
         </div>
       </div>
@@ -166,12 +175,16 @@ const SuggestionCard = ({ suggestion }) => (
   <Card className="hover:bg-gray-50 transition-colors">
     <CardContent className="p-4 flex justify-between items-center">
       <div className="flex items-center gap-3">
-        <Avatar className="h-12 w-12">
-          <AvatarImage src={suggestion.avatar} alt={suggestion.name} />
-          <AvatarFallback>{suggestion.name.charAt(0)}</AvatarFallback>
-        </Avatar>
+        <Link to={`/person/${suggestion.id}`}>
+          <Avatar className="h-12 w-12">
+            <AvatarImage src={suggestion.avatar} alt={suggestion.name} />
+            <AvatarFallback>{suggestion.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+        </Link>
         <div>
-          <h3 className="font-medium">{suggestion.name}</h3>
+          <Link to={`/person/${suggestion.id}`} className="hover:underline">
+            <h3 className="font-medium">{suggestion.name}</h3>
+          </Link>
           <p className="text-sm text-gray-500">{suggestion.mutualFriends} mutual friends</p>
         </div>
       </div>
