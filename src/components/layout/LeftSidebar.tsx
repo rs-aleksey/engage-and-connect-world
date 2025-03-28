@@ -1,11 +1,11 @@
 
 import { Button } from "@/components/ui/button";
-import { User, Users, Bookmark, Clock, ChevronDown } from "lucide-react";
+import { User, UserRoundSearch, Bookmark, Clock, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function LeftSidebar() {
   const shortcuts = [
-    { name: "Friends", icon: <Users className="h-5 w-5 mr-3" /> },
+    { name: "Friends", icon: <UserRoundSearch className="h-5 w-5 mr-3" /> }, // Changed icon here
     { name: "Saved", icon: <Bookmark className="h-5 w-5 mr-3" /> },
     { name: "Memories", icon: <Clock className="h-5 w-5 mr-3" /> },
   ];
