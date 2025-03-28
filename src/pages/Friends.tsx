@@ -5,9 +5,10 @@ import { LeftSidebar } from "@/components/layout/LeftSidebar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserPlus, UserMinus, MessageSquare, Search, UserCheck } from "lucide-react";
+import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs as RadixTabs } from "@radix-ui/react-tabs";
 
 // Sample friend data
 const allFriends = [
@@ -39,6 +40,10 @@ const Friends = () => {
     friend.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+  };
+
   return (
     <div className="min-h-screen bg-facebook-light">
       <Header />
@@ -59,7 +64,7 @@ const Friends = () => {
               />
             </div>
 
-            <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
+            <RadixTabs defaultValue="all" className="w-full" onValueChange={handleTabChange}>
               <TabsList className="w-full grid grid-cols-3 mb-4">
                 <TabsTrigger value="all">All Friends</TabsTrigger>
                 <TabsTrigger value="requests">Friend Requests</TabsTrigger>
@@ -87,7 +92,7 @@ const Friends = () => {
                   <SuggestionCard key={suggestion.id} suggestion={suggestion} />
                 ))}
               </TabsContent>
-            </Tabs>
+            </RadixTabs>
           </div>
         </div>
       </div>
