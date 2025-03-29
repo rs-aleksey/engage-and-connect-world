@@ -15,7 +15,7 @@ const conversations = [
   { id: 2, name: "Robert Fox", avatar: "/placeholder.svg", lastMessage: "The project deadline is tomorrow", timestamp: "2h", unread: 0, online: true },
   { id: 3, name: "Wade Warren", avatar: "/placeholder.svg", lastMessage: "Did you see the game last night?", timestamp: "1d", unread: 0, online: false },
   { id: 4, name: "Esther Howard", avatar: "/placeholder.svg", lastMessage: "I'll send you the files soon", timestamp: "3d", unread: 0, online: true },
-  { id: 5, name: "Leslie Alexander", avatar: "/placeholder.svg", lastMessage: "Thanks for your help!", timestamp: "1w", unread: 0, online: false },
+  { id: 5, name: "Leslie Alexander with a very long name", avatar: "/placeholder.svg", lastMessage: "Thanks for your help!", timestamp: "1w", unread: 0, online: false },
 ];
 
 // Sample messages for active conversation
@@ -117,13 +117,13 @@ const Messages = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex justify-between items-center">
-                          <h3 className="font-medium truncate">{conversation.name}</h3>
-                          <span className="text-xs text-gray-500">{conversation.timestamp}</span>
+                          <h3 className="font-medium text-sm whitespace-normal line-clamp-1">{conversation.name}</h3>
+                          <span className="text-xs text-gray-500 flex-shrink-0 ml-1">{conversation.timestamp}</span>
                         </div>
                         <p className="text-sm text-gray-500 truncate">{conversation.lastMessage}</p>
                       </div>
                       {conversation.unread > 0 && (
-                        <div className="bg-facebook-primary text-white text-xs font-medium rounded-full h-5 w-5 flex items-center justify-center">
+                        <div className="bg-facebook-primary text-white text-xs font-medium rounded-full h-5 w-5 flex items-center justify-center flex-shrink-0">
                           {conversation.unread}
                         </div>
                       )}
